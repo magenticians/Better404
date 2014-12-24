@@ -1,0 +1,14 @@
+{
+    "name": "magenticians/module-better-404",
+    "description": "todo",
+    "type": "magento2-module",
+    "version": "0.0.1",
+    "extra": {
+        "map": [
+            [
+                "src/Magenticians/Better404",
+                "Magenticians/Better404"
+            ]
+        ]
+    }
+}
