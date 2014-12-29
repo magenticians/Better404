@@ -1,1 +1,32 @@
-And here's where the better 404 page is outputted.
+<?php
+/**
+ * @var $this Magenticians\Better404\Block\Better404
+ */
+
+$claimedCount = $this->getClaimedCount();
+?>
+    <p>The URL you requested could not be routed towards anything meaningful and returned a 404 repsonse code. Here's what we tried.</p>
+
+
+    <h2>Front name: <code><?php echo $this->getModuleFrontName(); ?></code></h2>
+<?php
+if ($claimedCount > 1) {
+?>
+    <p><?php echo $claimedCount; ?> modules are claiming [<code><?php echo $this->getModuleFrontName(); ?></code>] as <code>&lt;frontName;</code>, this can only lead to tears.</p>
+<?php
+    return;
+} else if ($claimedCount === 0) {
+?>
+    <p>No modules claim [<code><?php echo $this->getModuleFrontName(); ?></code>] as <code>frontName</code></p>
+<?php
+    return;
+}
+?>
+
+    <p>The <code>frontName</code> [<code><?php echo $this->getModuleFrontName(); ?></code>] is claimed by the <code><?php echo $this->getClaimedName(0); ?></code> module.</p>
+
+    <h2>Action path: <code><?php echo $this->getActionPath(); ?></code></h2>
+
+    <p>The <code><?php echo $this->getActionPath(); ?></code> action path matches the following class, but it does not exist or could not be retrieved:</p>
+
+    <p><pre><?php echo $this->getMostLogicalClass(); ?></pre></p>
